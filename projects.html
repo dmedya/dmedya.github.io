@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Medya Doran</title>
+    <script>
+        // Change tab title when the user switches tabs
+        document.addEventListener('visibilitychange', function() {
+            document.title = document.hidden ? "Don't Forget Me" : "Medya Doran";
+        });
+
+        // Language switch functionality
+        function switchLanguage(lang) {
+            const content = {
+                en: {
+                    title: "Welcome to My Portfolio",
+                    projects: "My Projects",
+                    project1: "This is a brief description of Project 1. Add more details here.",
+                    project2: "This is a brief description of Project 2. Add more details here.",
+                    githubText: "For more projects, visit my GitHub profile:",
+                    footer: "&copy; 2024 Medya Doran. All rights reserved."
+                },
+                tr: {
+                    title: "Portfolyoma Hoş Geldiniz",
+                    projects: "Projelerim",
+                    project1: "Bu Proje 1'in kısa açıklamasıdır. Daha fazla detay ekleyin.",
+                    project2: "Bu Proje 2'nin kısa açıklamasıdır. Daha fazla detay ekleyin.",
+                    githubText: "Daha fazla projeye GitHub profilimden ulaşabilirsiniz:",
+                    footer: "&copy; 2024 Medya Doran. Tüm haklar saklıdır."
+                }
+            };
+
+            document.getElementById("header-title").innerText = content[lang].title;
+            document.getElementById("projects-title").innerText = content[lang].projects;
+            document.getElementById("project1").innerText = content[lang].project1;
+            document.getElementById("project2").innerText = content[lang].project2;
+            document.getElementById("github-text").innerText = content[lang].githubText;
+            document.getElementById("footer-text").innerHTML = content[lang].footer;
+        }
+
+        // Dark/Light mode toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const themeIcon = document.getElementById('theme-icon');
+            themeIcon.src = document.body.classList.contains('dark-mode') 
+                ? 'https://cdn-icons-png.flaticon.com/512/702/702797.png' 
+                : 'https://cdn-icons-png.flaticon.com/512/702/702814.png';
+            themeIcon.alt = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background-color: #333;
+            color: #f5f5f5;
+        }
+
+        header {
+            background-color: #6a1b9a;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            background-color: #7e57c2;
+            padding: 10px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .language-switch {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            font-size: 1.2em;
+            padding: 5px 10px;
+            color: #ffffff;
+            background-color: #6a1b9a;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .language-switch a:hover {
+            background-color: #4a148c;
+            transform: scale(1.05);
+        }
+
+        .theme-switch {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+        }
+
+        .theme-switch img {
+            width: 24px;
+            height: 24px;
+        }
+
+        section {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .project-item {
+            margin: 20px auto;
+            background-color: #e8eaf6;
+            border-radius: 10px;
+            padding: 15px;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark-mode .project-item {
+            background-color: #424242;
+            color: #f5f5f5;
+        }
+
+        footer {
+            background-color: #6a1b9a;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body onload="switchLanguage('en')">
+    <!-- Dil Seçeneği -->
+    <div class="language-switch">
+        <a href="#" onclick="switchLanguage('en'); return false;">EN</a>
+        <a href="#" onclick="switchLanguage('tr'); return false;">TR</a>
+    </div>
+
+    <!-- Tema Butonu -->
+    <div class="theme-switch" onclick="toggleTheme()">
+        <img id="theme-icon" src="https://cdn-icons-png.flaticon.com/512/702/702814.png" alt="Dark Mode">
+    </div>
+
+    <header>
+        <h1 id="header-title">Welcome to My Portfolio</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">About Me</a>
+        <a href="projects.html">Projects</a>
+    </nav>
+
+    <section id="projects">
+        <h2 id="projects-title">My Projects</h2>
+        <div class="project-item">
+            <h3>Project 1</h3>
+            <p id="project1">This is a brief description of Project 1. Add more details here.</p>
+        </div>
+        <div class="project-item">
+            <h3>Project 2</h3>
+            <p id="project2">This is a brief description of Project 2. Add more details here.</p>
+        </div>
+        <div class="github-link" style="margin-top: 20px;">
+            <p id="github-text">For more projects, visit my GitHub profile:</p>
+            <a href="https://github.com/dmedya" target="_blank">github.com/dmedya</a>
+        </div>
+    </section>
+
+    <footer>
+        <p id="footer-text">&copy; 2024 Medya Doran. All rights reserved.</p>
+    </footer>
+</body>
+</html>
